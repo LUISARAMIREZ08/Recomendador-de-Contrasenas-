@@ -7,6 +7,10 @@ from fastapi.encoders import jsonable_encoder
 from middlewares.jwt_bearer import JWTBearer
 import time
 from schemas.recommender import Recommender
+import secrets
+import string
+import random
+
 
 Recommender_router = APIRouter()
 
@@ -52,3 +56,30 @@ def delete_recommender(id: int):
     db.commit()
     return JSONResponse(status_code=200, content={"message":"Password deleted successfully"})
 
+@Recommender_router.post("/recommender/generate_password", tags=['Recommender'], response_model=str, status_code=200, dependencies=[Depends(JWTBearer())])
+def generate_password(minusculas: int = Query(..., ge=0), mayusculas: int = Query(..., ge=0),
+                       numeros: int = Query(..., ge=0), caracteres_especiales: int = Query(..., ge=0)):
+    db = Session()
+    contraseña = []
+
+    for i in range(minusculas):
+        contraseña.append(secrets.choice(string.ascii_lowercase))
+
+    for i in range(mayusculas):
+        contraseña.append(secrets.choice(string.ascii_uppercase))
+
+    for i in range(numeros):
+        contraseña.append(secrets.choice(string.digits))
+
+    for i in range(caracteres_especiales):
+        contraseña.append(secrets.choice(string.punctuation))
+
+    random.shuffle(contraseña)
+    contraseña_final = "".join(contraseña)
+
+    new_recommender = ModelRecommender(password=contraseña_final)
+
+    db.add(new_recommender)
+    db.commit()
+
+    return JSONResponse(status_code=200, content={"password": contraseña_final})
