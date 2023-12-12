@@ -31,3 +31,24 @@ def create_recommender(recommender: Recommender):
     db.add(new_password)
     db.commit()
     return JSONResponse(content={"message":"Movie created successfully"}, status_code=201)
+
+@Recommender_router.put("/recommender/update/{id}", tags=['Recommender'])
+def update_recommender(id: int, recommender: Recommender):
+    db = Session()
+    result = db.query(ModelRecommender).filter(ModelRecommender.id == id).first()
+    if not result:
+        return JSONResponse(status_code=404, content={"message":"Password not found"})
+    result.password = recommender.password
+    db.commit()
+    return JSONResponse(status_code=200, content={"message":"Password updated successfully"})
+
+@Recommender_router.delete("/recommender/delete/{id}", tags=['Recommender'], status_code=200, dependencies=[Depends(JWTBearer())])
+def delete_recommender(id: int):
+    db = Session()
+    result = db.query(ModelRecommender).filter(ModelRecommender.id == id).first()
+    if not result:
+        return JSONResponse(status_code=404, content={"message":"Password not found"})
+    db.delete(result)
+    db.commit()
+    return JSONResponse(status_code=200, content={"message":"Password deleted successfully"})
+
