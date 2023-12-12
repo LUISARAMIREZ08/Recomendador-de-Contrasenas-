@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from fastapi.response import HTMLResponse
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
-app.title = "My Awesome API"
+app.title = "Recomendador de Contraseñas"
 app.version = "1.0.0"
 
 @app.get("/",tags=['home'])
