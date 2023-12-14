@@ -4,11 +4,23 @@ from config.database import engine, Base
 from routers.auth import auth_router
 from routers.recommender import Recommender_router
 from middlewares.error_handler import ErrorHandler
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 app.title = "Recomendador de Contraseñas"
 app.version = "1.0.0"
+
+origin = [
+    "http://localhost:3000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origin,
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],
+)
 
 app.add_middleware(ErrorHandler)
 app.include_router(auth_router)
