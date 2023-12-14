@@ -11,17 +11,6 @@ app = FastAPI()
 app.title = "Recomendador de Contraseñas"
 app.version = "1.0.0"
 
-origin = [
-    "http://localhost:3000",
-]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origin,
-    allow_credentials=True,
-    allow_methods=["*"], 
-    allow_headers=["*"],
-)
-
 app.add_middleware(ErrorHandler)
 app.include_router(auth_router)
 app.include_router(Recommender_router)
@@ -31,3 +20,4 @@ Base.metadata.create_all(bind=engine)
 @app.get("/",tags=['home'])
 def message():
     return HTMLResponse(content = "<h1>Hola Crea tu contraseña!!!!</h1>")
+

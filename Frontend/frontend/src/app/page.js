@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 function App(){
   useEffect(() => {
-    fetch('http://localhost:8000/recommender')
+    fetch('http://localhost:8000/')
     .then(response => response.json())
     .then(response => console.log(response))
   }, [])
