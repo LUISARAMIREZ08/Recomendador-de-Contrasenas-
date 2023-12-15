@@ -6,4 +6,5 @@ from typing import Optional
 
 class Recommender(BaseModel):
     id: Optional[int] = None
+    email:str= Field(min_length=8, max_length=100)
     password:str= Field(min_length=8, max_length=20)

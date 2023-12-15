@@ -9,4 +9,5 @@ class Recommender(Base):
     __tablename__ = "recommender"
 
     id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, nullable=False)
     password = Column(String, nullable=False)

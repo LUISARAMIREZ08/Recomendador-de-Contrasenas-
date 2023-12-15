@@ -42,6 +42,7 @@ def update_recommender(id: int, recommender: Recommender):
     result = db.query(ModelRecommender).filter(ModelRecommender.id == id).first()
     if not result:
         return JSONResponse(status_code=404, content={"message":"Password not found"})
+    result.email = recommender.email
     result.password = recommender.password
     db.commit()
     return JSONResponse(status_code=200, content={"message":"Password updated successfully"})
@@ -60,7 +61,7 @@ def delete_recommender(id: int):
 #This function generates a random password based on the specified number of lowercase letters, 
 #uppercase letters, numbers and special characters, and saves it to the database.
 @Recommender_router.post("/recommender/generate_password", tags=['Recommender'], response_model=str, status_code=200, dependencies=[Depends(JWTBearer())])
-def generate_password(minusculas: int = Query(..., ge=0), mayusculas: int = Query(..., ge=0),
+def generate_password(email: str, minusculas: int = Query(..., ge=0), mayusculas: int = Query(..., ge=0),
                        numeros: int = Query(..., ge=0), caracteres_especiales: int = Query(..., ge=0)):
     db = Session()
     contraseña = []
@@ -80,9 +81,9 @@ def generate_password(minusculas: int = Query(..., ge=0), mayusculas: int = Quer
     random.shuffle(contraseña)
     contraseña_final = "".join(contraseña)
 
-    new_recommender = ModelRecommender(password=contraseña_final)
+    new_recommender = ModelRecommender(email=email, password=contraseña_final)
 
     db.add(new_recommender)
     db.commit()
 
-    return JSONResponse(status_code=200, content={"password": contraseña_final})
+    return JSONResponse(status_code=200, content={"email": email, "password": contraseña_final})
