@@ -29,6 +29,7 @@ Una vez que se haya clonado el repositorio, se abre la terminal y se ejecutan lo
 ***
 ## Intala las dependencias del proyecto 
 En la terminal y dentro del entorno virtual, ejecuta el siguiente comando en la ruta C:\> <venv>\Backend:
+
 **pip install -r requirements.txt**
 ***
 ## Ejecución 
