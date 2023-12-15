@@ -14,7 +14,7 @@ El Recomendador de Contraseñas es una aplicación sensilla construida con FastA
 ## Instalación 
 Clona el Repositorio:
 
-- git clone https://github.com/LUISARAMIREZ08/Recomendador-de-Contrase-as-.git
+- git clone https://github.com/LUISARAMIREZ08/Recomendador-de-Contrasenas-.git
 ***
 ## Activación de entorno virtual
 Una vez que se haya clonado el repositorio, se abre la terminal y se ejecutan los siguientes comandos:
