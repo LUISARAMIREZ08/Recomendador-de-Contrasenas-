@@ -25,7 +25,7 @@ Una vez que se haya clonado el repositorio, se abre la terminal y se ejecutan lo
 
   - PowerShell
 
-    **PS C:\> <venv>\Backedn\venv\Scripts\Activate.ps1**
+    **PS C:\> <venv>\Backend\venv\Scripts\Activate.ps1**
 ***
 ## Intala las dependencias del proyecto 
 En la terminal y dentro del entorno virtual, ejecuta el siguiente comando en la ruta C:\> <venv>\Backend:
