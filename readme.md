@@ -20,7 +20,8 @@ Clona el Repositorio:
 Una vez que se haya clonado el repositorio, se abre la terminal y se ejecutan los siguientes comandos:
 - Ve a la siguiente ruta para activar el entorno virtual:
   - cmd.exe
-**C:\> <venv>\Backend\venv\Scripts\activate.bat**
+  
+    **C:\> <venv>\Backend\venv\Scripts\activate.bat**
 
   - PowerShell
 
