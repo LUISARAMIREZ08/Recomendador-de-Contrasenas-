@@ -52,6 +52,5 @@ Al realizar la autenticación exitosa, se generará un token que deberá ser ing
 3. Actualizar Contraseña de Recommender por ID 
 4. Eliminar Recommender por ID
 5. Generar Contraseña aleatoria 
-6. 
 
 
