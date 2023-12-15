@@ -35,15 +35,6 @@ def get_recommender_by_id(id: int = Path(..., gt=0)):
     db.close()
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
-#This function creates a recommender in the database and returns a success message.
-@Recommender_router.post("/recommender/create", tags=['Recommender'], response_model=Recommender, status_code=201, dependencies=[Depends(JWTBearer())])
-def create_recommender(recommender: Recommender):
-    db = Session()
-    new_password = ModelRecommender(**recommender.model_dump())
-    db.add(new_password)
-    db.commit()
-    return JSONResponse(content={"message":"Password created successfully"}, status_code=201)
-
 #This function updates the password of a recommender in the database.
 @Recommender_router.put("/recommender/update/{id}", tags=['Recommender'])
 def update_recommender(id: int, recommender: Recommender):
