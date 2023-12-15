@@ -43,6 +43,7 @@ En la terminal y dentro del entorno virtual, ejecuta el siguiente comando en la 
 Para autenticarse en la aplicación, utiliza el endpoint POST /login.
 - Ingresa el email: admin@mail.com
 - Ingresa la contraseña: 123456
+
 Al realizar la autenticación exitosa, se generará un token que deberá ser ingresado en el encabezado de autorización (Authorize).
 ***
 ## Endpoints del Recommender API
