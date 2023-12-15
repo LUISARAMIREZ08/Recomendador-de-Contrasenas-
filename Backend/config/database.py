@@ -1,16 +1,17 @@
-import os
+# The code is importing necessary modules from the SQLAlchemy library.
+import os 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker 
+from sqlalchemy.ext.declarative import declarative_base 
 
 
-sqlite_file_name = "../database.sqlite"
-base_dir = os.path.dirname(os.path.realpath(__file__))
+sqlite_file_name = "../database.sqlite" # Database file name
+base_dir = os.path.dirname(os.path.realpath(__file__)) # Application Base Directory
 
-database_url = f"sqlite:///{os.path.join(base_dir, sqlite_file_name)}"
+database_url = f"sqlite:///{os.path.join(base_dir, sqlite_file_name)}" # Database URL
 
-engine = create_engine(database_url, echo=True)
+engine = create_engine(database_url, echo=True) # Creating the database engine
 
-Session = sessionmaker(bind=engine)
+Session = sessionmaker(bind=engine) # Creating the database session
 
-Base = declarative_base()
+Base = declarative_base() # creation of the database

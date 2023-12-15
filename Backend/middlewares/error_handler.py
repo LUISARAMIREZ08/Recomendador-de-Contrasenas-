@@ -1,7 +1,10 @@
+# These lines of code are importing necessary modules and classes for creating a custom error handler
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import Request, FastAPI, Response
-from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.responses import JSONResponse
 
+# The `ErrorHandler` class is a middleware that catches exceptions and returns a JSON response with
+# the error message and a status code of 500.
 class ErrorHandler(BaseHTTPMiddleware):
 
     def __init__(self, app: FastAPI):
