@@ -1,4 +1,4 @@
-# Sistema de recomendación de contraseñas
+# Sistema de Recomendación de contraseñas
 ***
 ## Descripcion
 El Recomendador de Contraseñas es una aplicación sensilla construida con FastAPI que proporciona una manera segura y eficiente de generar contraseñas robustas para su uso en diversos servicios y aplicaciones. Este recomendador utiliza principios de seguridad y buenas prácticas para garantizar la creación de contraseñas fuertes y seguras.
